@@ -1,0 +1,19 @@
+.color {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  display: inline-block;
+  padding: 33px;
+}
+
+#color-palette {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
