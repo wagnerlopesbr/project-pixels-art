@@ -15,9 +15,8 @@ function selectingColor() {
       const selected = document.querySelector('.selected');
       if (selected) {
         selected.classList.remove('selected');
-      } else {
-        event.target.classList.add('selected');
       }
+      event.target.classList.add('selected');
     }
     selectedColor.addEventListener('click', pickAColor);
   }
