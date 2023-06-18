@@ -37,6 +37,12 @@ for (let i = 0; i < pixels.length; i += 1) {
     coloringPixels(pixels[i])});
 }
 
+// //////////////////////////////////////////////////////////////////////////////////////////////
+// // localStorage manipulation
+localStorage.setItem('pixelBoard', JSON.stringify(document.getElementsByClassName('pixel')));
+const backupReturn = JSON.parse(localStorage.getItem('pixelBoard'));
+// //////////////////////////////////////////////////////////////////////////////////////////////
+
 const buttonToClearBoard = document.getElementById('clear-board');
 buttonToClearBoard.addEventListener('click', clearingBoard);
 function clearingBoard() {
@@ -61,6 +67,7 @@ function randomColors() {
 }
 
 //////////////////// COMMIT PARA SALVAR O PROGRESSO DO REQUISITO 7 (incompleto/não funcionando)
+
 
 // function saveBoard() {
 //   const backup = [];
