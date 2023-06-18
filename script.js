@@ -17,7 +17,6 @@ function selectingColor() {
         selected.classList.remove('selected');
       }
       event.target.classList.add('selected');
-      currentColor = event.target.style.backgroundColor;
     }
     selectColor.addEventListener('click', pickAColor);
   }
