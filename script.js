@@ -62,24 +62,24 @@ function randomColors() {
 
 //////////////////// COMMIT PARA SALVAR O PROGRESSO DO REQUISITO 7 (incompleto/não funcionando)
 
-function saveBoard() {
-  const backup = [];
-  for (let i = 0; i < pixels.length; i += 1) {
-    const savedBoard = pixels.style.backgroundColor;
-    if (savedBoard.length !== 0) {
-      backup.push(savedBoard);
-      localStorage.setItem('pixelBoard', JSON.stringify(backup));
-    }
-  }
-}
-saveBoard();
-///////
-function loadBoard() {
-  if (localStorage.getItem('pixelBoard') !== null) {
-    const boardToLoad = JSON.parse(localStorage.getItem('pixelBoard'));
-    for (let i = 0; i < pixels.length; i += 1) {
-      const backup = boardToLoad[i];
-      pixels[i].style.backgroundColor = backup;
-    }
-  }
-}
+// function saveBoard() {
+//   const backup = [];
+//   for (let i = 0; i < pixels.length; i += 1) {
+//     const savedBoard = pixels.style.backgroundColor;
+//     if (savedBoard.length !== 0) {
+//       backup.push(savedBoard);
+//       localStorage.setItem('pixelBoard', JSON.stringify(backup));
+//     }
+//   }
+// }
+// saveBoard();
+// ///////
+// function loadBoard() {
+//   if (localStorage.getItem('pixelBoard') !== null) {
+//     const boardToLoad = JSON.parse(localStorage.getItem('pixelBoard'));
+//     for (let i = 0; i < pixels.length; i += 1) {
+//       const backup = boardToLoad[i];
+//       pixels[i].style.backgroundColor = backup;
+//     }
+//   }
+// }
