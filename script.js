@@ -1,3 +1,7 @@
+window.onload = () => {
+  loadingBoard();
+};
+
 const colorList = document.querySelectorAll('.color');
 colorList[0].style.backgroundColor = 'blue';
 colorList[1].style.backgroundColor = 'red';
@@ -41,17 +45,41 @@ function clearingBoard() {
   }
 }
 
-function selectRandomColor() {
+function settingRandomColor() {
   const colorsToRandom = ['green', 'red', 'blue', 'yellow', 'purple', 'black', 'grey', 'pink', 'orange', 'purple', 'navy'];
   const randomColorSelected = colorsToRandom[(Math.random() * colorsToRandom.length) | 0];
   return randomColorSelected;
 }
 
-const buttonToRandomColorIntoBoard = document.getElementById('button-random-color');
-buttonToRandomColorIntoBoard.addEventListener('click', randomColors);
+const buttonToRandomColorIntoList = document.getElementById('button-random-color');
+buttonToRandomColorIntoList.addEventListener('click', randomColors);
 function randomColors() {
   for (let i = 0; i < colorList.length; i += 1) {
-    const randomColorToUse = selectRandomColor();
+    const randomColorToUse = settingRandomColor();
     colorList[i].style.backgroundColor = randomColorToUse;
+  }
+}
+
+//////////////////// COMMIT PARA SALVAR O PROGRESSO DO REQUISITO 7 (incompleto/não funcionando)
+
+function saveBoard() {
+  const backup = [];
+  for (let i = 0; i < pixels.length; i += 1) {
+    const savedBoard = pixels.style.backgroundColor;
+    if (savedBoard.length !== 0) {
+      backup.push(savedBoard);
+      localStorage.setItem('pixelBoard', JSON.stringify(backup));
+    }
+  }
+}
+saveBoard();
+///////
+function loadBoard() {
+  if (localStorage.getItem('pixelBoard') !== null) {
+    const boardToLoad = JSON.parse(localStorage.getItem('pixelBoard'));
+    for (let i = 0; i < pixels.length; i += 1) {
+      const backup = boardToLoad[i];
+      pixels[i].style.backgroundColor = backup;
+    }
   }
 }
