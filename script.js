@@ -1,5 +1,5 @@
 window.onload = () => {
-  loadingBoard();
+  // loadingBoard();
 };
 
 const colorList = document.querySelectorAll('.color');
