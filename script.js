@@ -33,10 +33,25 @@ for (let i = 0; i < pixels.length; i += 1) {
     coloringPixels(pixels[i])});
 }
 
-const buttonToClearBoard = document.querySelector('#clear-board');
+const buttonToClearBoard = document.getElementById('clear-board');
 buttonToClearBoard.addEventListener('click', clearingBoard);
 function clearingBoard() {
   for (let i = 0; i < pixels.length; i += 1) {
     pixels[i].style.backgroundColor = 'white';
+  }
+}
+
+function selectRandomColor() {
+  const colorsToRandom = ['green', 'red', 'blue', 'yellow', 'purple', 'black', 'grey', 'pink', 'orange', 'purple', 'navy'];
+  const randomColorSelected = colorsToRandom[(Math.random() * colorsToRandom.length) | 0];
+  return randomColorSelected;
+}
+
+const buttonToRandomColorIntoBoard = document.getElementById('button-random-color');
+buttonToRandomColorIntoBoard.addEventListener('click', randomColors);
+function randomColors() {
+  for (let i = 0; i < colorList.length; i += 1) {
+    const randomColorToUse = selectRandomColor();
+    colorList[i].style.backgroundColor = randomColorToUse;
   }
 }

@@ -43,3 +43,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#buttons {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  text-align: center;
+}
