@@ -24,12 +24,11 @@ function selectingColor() {
 selectingColor();
 
 const pixels = document.querySelectorAll('.pixel');
-function coloringPixels(newPixelBGC) {
+function coloringPixels(event) {
   const colorToUse = document.querySelector('.selected');
-  newPixelBGC.style.backgroundColor = colorToUse.style.backgroundColor;
+  event.style.backgroundColor = colorToUse.style.backgroundColor;
 }
 for (let i = 0; i < pixels.length; i += 1) {
   pixels[i].addEventListener('click', function coloring() {
     coloringPixels(pixels[i])});
 }
-coloringPixels();
