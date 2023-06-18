@@ -32,3 +32,11 @@ for (let i = 0; i < pixels.length; i += 1) {
   pixels[i].addEventListener('click', function coloring() {
     coloringPixels(pixels[i])});
 }
+
+const buttonToClearBoard = document.querySelector('#clear-board');
+buttonToClearBoard.addEventListener('click', clearingBoard);
+function clearingBoard() {
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+}
