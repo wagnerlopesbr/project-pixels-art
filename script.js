@@ -29,12 +29,14 @@ function selectingColor() {
 // requisito 4 ============================================================================================ //
 function coloringPixels(event) {
   const colorToUse = document.querySelector('.selected');
-  event.style.backgroundColor = colorToUse.style.backgroundColor;
+  if (colorToUse) {
+    event.style.backgroundColor = colorToUse.style.backgroundColor;
+  }
 }
 
 function colorInputOnPixels() {
   const pixels = document.querySelectorAll('.pixel');
-  // próximas 2 são referentes ao requisito 7
+  // próximas 2 linhas são referentes ao requisito 7
   let boardSaved = new Array(25).fill('white');
   const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
   for (let i = 0; i < pixels.length; i += 1) {
