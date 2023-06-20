@@ -98,6 +98,5 @@ window.onload = () => {
   colorInputOnPixels();
   boardCleaner();
   randomazingColorPalette();
-  // savingBoard();
   loadingBoard();
 };
