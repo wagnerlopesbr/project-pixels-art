@@ -94,7 +94,7 @@ function randomazingColorPalette() {
 //       }
 //     });
 //   }
-// };
+// }; /
 
 const loadingBoard = () => {
   const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
