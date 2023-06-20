@@ -29,8 +29,9 @@ function selectingColor() {
 // requisito 4 ============================================================================================ //
 function colorInputOnPixels() {
   const pixels = document.querySelectorAll('.pixel');
-  // próxima linha é referente ao requisito 7
+  // próximas 2 são referentes ao requisito 7
   let boardSaved = new Array(25).fill('white');
+  const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
   function coloringPixels(event) {
     const colorToUse = document.querySelector('.selected');
     event.style.backgroundColor = colorToUse.style.backgroundColor;
@@ -39,8 +40,13 @@ function colorInputOnPixels() {
     pixels[i].addEventListener('click', function coloring() {
     coloringPixels(pixels[i])
     // próximas 2 linhas são referentes ao requisito 7
-    boardSaved[i] = pixels[i].style.backgroundColor;
-    localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
+      if (JSON.parse(localStorage.getItem('pixelBoard')) === null) {
+        boardSaved[i] = pixels[i].style.backgroundColor;
+        localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
+      } else {
+        backupedBoard[i] = pixels[i].style.backgroundColor;
+        localStorage.setItem('pixelBoard', JSON.stringify(backupedBoard));
+      }
     });
   }
 }
