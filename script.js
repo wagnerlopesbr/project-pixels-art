@@ -29,13 +29,19 @@ function selectingColor() {
 // requisito 4 ============================================================================================ //
 function colorInputOnPixels() {
   const pixels = document.querySelectorAll('.pixel');
+  // próxima linha é referente ao requisito 7
+  let boardSaved = [];
   function coloringPixels(event) {
     const colorToUse = document.querySelector('.selected');
     event.style.backgroundColor = colorToUse.style.backgroundColor;
   }
   for (let i = 0; i < pixels.length; i += 1) {
     pixels[i].addEventListener('click', function coloring() {
-    coloringPixels(pixels[i])});
+    coloringPixels(pixels[i])
+    // próximas 2 linhas são referentes ao requisito 7
+    boardSaved.push(pixels[i].style.backgroundColor);
+    localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
+    });
   }
 }
 
@@ -71,21 +77,37 @@ function randomazingColorPalette() {
 
 // requisito 7 ============================================================================================ //
 
-// const boardToLoad = localStorage.getItem('pixelBoard', JSON.stringfy(pixelBoard));
-// // vou salvar minha ul pai das li q são os pixels q mudam de cor
-// // (a cada alteração sofrida) e salvar como string (segue...)
+// const savingBoard = () => {
+//   const pixels = document.querySelectorAll('.pixel');
+//   const boardSaved = [];
+//   for (let i = 0; i < pixels.length; i += 1) {
+//     pixels[i].addEventListener('click', () => {
+//       for (let i = 0; i < pixels.length; i += 1) {
+//         boardSaved.push(`${pixels[i].style.backgroundColor}`);
+//         localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
+//         boardSaved = [];
+//       }
+//     });
+//   }
+// };
 
-// function loadBackup() {
-//   pixelBoard.innerHTML = localStorage.setItem('pixelBoard', boardToLoad);
-// // (...seguindo) pra qnd eu carregar pra ser o board atual, como vem como string
-// // eu só jogo td como innerHTML q teoricamente funcionaria, atualizando TUDO
-// // dentro da ul de id #pixel-board, carregando o tabuleiro todo de uma vez
-// }
+const loadingBoard = () => {
+  const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
+  const pixels = document.querySelectorAll('.pixel');
+  if (JSON.parse(localStorage.getItem('pixelBoard')) !== null) {
+    for (let i = 0; i < backupedBoard.length; i += 1) {
+      pixels[i].style.backgroundColor = backupedBoard[i];
+    }
+  }
+};
 
+// ======================================================================================================== //
 window.onload = () => {
   selectingColor();
   creatingPixelsBoard();
   colorInputOnPixels();
   boardCleaner();
   randomazingColorPalette();
+  // savingBoard();
+  loadingBoard();
 };
