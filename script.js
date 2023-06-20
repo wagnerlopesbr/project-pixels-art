@@ -27,25 +27,26 @@ function selectingColor() {
 }
 
 // requisito 4 ============================================================================================ //
+function coloringPixels(event) {
+  const colorToUse = document.querySelector('.selected');
+  event.style.backgroundColor = colorToUse.style.backgroundColor;
+}
+
 function colorInputOnPixels() {
   const pixels = document.querySelectorAll('.pixel');
   // próximas 2 são referentes ao requisito 7
   let boardSaved = new Array(25).fill('white');
   const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
-  function coloringPixels(event) {
-    const colorToUse = document.querySelector('.selected');
-    event.style.backgroundColor = colorToUse.style.backgroundColor;
-  }
   for (let i = 0; i < pixels.length; i += 1) {
-    pixels[i].addEventListener('click', function coloring() {
-    coloringPixels(pixels[i])
-    // próximas 2 linhas são referentes ao requisito 7
-      if (JSON.parse(localStorage.getItem('pixelBoard')) === null) {
-        boardSaved[i] = pixels[i].style.backgroundColor;
-        localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
-      } else {
+    pixels[i].addEventListener('click', () => {
+      coloringPixels(pixels[i]);
+      // próximas 9 linhas são referentes ao requisito 7
+      if (backupedBoard) {
         backupedBoard[i] = pixels[i].style.backgroundColor;
         localStorage.setItem('pixelBoard', JSON.stringify(backupedBoard));
+      } else {
+        boardSaved[i] = pixels[i].style.backgroundColor;
+        localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
       }
     });
   }
