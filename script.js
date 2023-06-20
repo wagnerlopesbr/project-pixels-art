@@ -30,7 +30,7 @@ function selectingColor() {
 function colorInputOnPixels() {
   const pixels = document.querySelectorAll('.pixel');
   // próxima linha é referente ao requisito 7
-  let boardSaved = [];
+  let boardSaved = new Array(25).fill('white');
   function coloringPixels(event) {
     const colorToUse = document.querySelector('.selected');
     event.style.backgroundColor = colorToUse.style.backgroundColor;
@@ -50,7 +50,7 @@ function boardCleaner() {
   const pixels = document.querySelectorAll('.pixel');
   const buttonToClearBoard = document.getElementById('clear-board');
   // próxima linha é referente ao requisito 7
-  let boardSaved = [];
+  let boardSaved = new Array(25).fill('white');
   buttonToClearBoard.addEventListener('click', clearingBoard);
   function clearingBoard() {
     for (let i = 0; i < pixels.length; i += 1) {
@@ -81,21 +81,6 @@ function randomazingColorPalette() {
 }
 
 // requisito 7 ============================================================================================ //
-
-// const savingBoard = () => {
-//   const pixels = document.querySelectorAll('.pixel');
-//   const boardSaved = [];
-//   for (let i = 0; i < pixels.length; i += 1) {
-//     pixels[i].addEventListener('click', () => {
-//       for (let i = 0; i < pixels.length; i += 1) {
-//         boardSaved.push(`${pixels[i].style.backgroundColor}`);
-//         localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
-//         boardSaved = [];
-//       }
-//     });
-//   }
-// }; /
-
 const loadingBoard = () => {
   const backupedBoard = JSON.parse(localStorage.getItem('pixelBoard'));
   const pixels = document.querySelectorAll('.pixel');
