@@ -39,7 +39,7 @@ function colorInputOnPixels() {
     pixels[i].addEventListener('click', function coloring() {
     coloringPixels(pixels[i])
     // próximas 2 linhas são referentes ao requisito 7
-    boardSaved.push(pixels[i].style.backgroundColor);
+    boardSaved[i] = pixels[i].style.backgroundColor;
     localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
     });
   }
@@ -56,7 +56,7 @@ function boardCleaner() {
     for (let i = 0; i < pixels.length; i += 1) {
       pixels[i].style.backgroundColor = 'white';
       // próximas 2 linhas são referentes ao requisito 7
-      boardSaved.push(pixels[i].style.backgroundColor);
+      boardSaved[i] = pixels[i].style.backgroundColor;
       localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
     }
   }
