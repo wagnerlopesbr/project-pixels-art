@@ -49,10 +49,15 @@ function colorInputOnPixels() {
 function boardCleaner() {
   const pixels = document.querySelectorAll('.pixel');
   const buttonToClearBoard = document.getElementById('clear-board');
+  // próxima linha é referente ao requisito 7
+  let boardSaved = [];
   buttonToClearBoard.addEventListener('click', clearingBoard);
   function clearingBoard() {
     for (let i = 0; i < pixels.length; i += 1) {
       pixels[i].style.backgroundColor = 'white';
+      // próximas 2 linhas são referentes ao requisito 7
+      boardSaved.push(pixels[i].style.backgroundColor);
+      localStorage.setItem('pixelBoard', JSON.stringify(boardSaved));
     }
   }
 }
