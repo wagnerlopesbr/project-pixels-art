@@ -1,4 +1,4 @@
-# Store Manager - Project
+# Pixels Art - Project
 
 ### English:
 
